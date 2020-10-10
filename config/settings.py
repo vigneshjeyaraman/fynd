@@ -25,7 +25,7 @@ SECRET_KEY = 'f0q!8dwq(*ad)mu+8tel-q-u)a52+7u1^vi9_#k&8ipekdn2p7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['fyndimdbapi.herokuapp.com']
 
 
 # Application definition
