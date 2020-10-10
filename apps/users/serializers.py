@@ -3,7 +3,7 @@ from rest_framework import serializers
 from apps.users.models import User
 
 class UserSignupSerializer(serializers.ModelSerializer):
-    """Serializer to validate user"""
+    """Serializer to validate users signup details"""
     email = serializers.CharField()
     password = serializers.CharField()
     username = serializers.CharField()
@@ -26,6 +26,8 @@ class UserSignupSerializer(serializers.ModelSerializer):
         return user_obj
 
 class LoginSerializer(serializers.Serializer):
+    """Serializer to validate users login creds"""
+    
     email = serializers.CharField()
     password = serializers.CharField()
 

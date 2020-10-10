@@ -8,11 +8,15 @@ class MovieSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ManageMovieSerializer(serializers.ModelSerializer):
+    """Serializer to manage add and update of movies"""
+
     class Meta:
         model = Movies
         fields = ('name', 'imdb_score', 'director', 'popularity', 'genre')
 
     def create(self, validated_data):
+        """Custom create method to add new movie"""
+
         genre = validated_data.pop('genre')
         movie_obj = Movies.objects.create(**validated_data)
         movie_obj.genre = str(genre)
@@ -20,6 +24,8 @@ class ManageMovieSerializer(serializers.ModelSerializer):
         return movie_obj
 
     def update(self, instance, validated_data):
+        """Custom update method to update movie info"""
+        
         genre = validated_data.pop('genre')
         movie_obj = Movies.objects.filter(id=instance.id)
         ins = movie_obj.first()
