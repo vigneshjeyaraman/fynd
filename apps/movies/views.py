@@ -12,7 +12,6 @@ from apps.movies.custom_filters import MovieFilter
 
 class ListMovies(viewsets.ReadOnlyModelViewSet):
     """List Movie for both admin and normal user"""
-    permission_classes = (permissions.IsAuthenticated,)
     queryset = Movies.objects.order_by('-updated_at').all()
     serializer_class = MovieSerializer
     filter_backends = (DjangoFilterBackend,)
