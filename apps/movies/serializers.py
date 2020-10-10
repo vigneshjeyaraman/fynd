@@ -21,9 +21,11 @@ class ManageMovieSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         genre = validated_data.pop('genre')
-        movie_obj = Movies.objects.filter(id=instance.id).update(**validated_data)
-        instance.genre = str(genre)
-        instance.save()
+        movie_obj = Movies.objects.filter(id=instance.id)
+        ins = movie_obj.first()
+        ins.genre = str(genre)
+        ins.save()
+        movie_obj.update(**validated_data)
         return movie_obj
     
 
